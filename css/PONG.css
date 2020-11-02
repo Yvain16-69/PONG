@@ -5,6 +5,7 @@ body {
     font-family: monospace;
 }
 #terrain{
+    position: relative;
     border: 1px solid white;
 
     width:800px;
@@ -12,6 +13,8 @@ body {
 
 }
 #balle{
+    position: absolute;
+    top:50%
     width: 20px;
     height: 20px;
     background-color: white;
