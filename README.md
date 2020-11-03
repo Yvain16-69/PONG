@@ -1,2 +1,2 @@
-https://yvain16-69.github.io/PONG/
+https://yvain16-69.github.io/PONG/index.html
 
