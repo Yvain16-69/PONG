@@ -1,8 +1,8 @@
 
 
-let largeur=$("balle").width();
-let gauche=parseInt($("balle").cssleft("left"));
-let haut=parseInt($("balle").csstop("top"));
+let largeur=$("#balle").width();
+let gauche=parseInt($("#balle").css("left"));
+let haut=parseInt($("#balle").css("top"));
 alert(gauche);
 
 setInterval(function(){
