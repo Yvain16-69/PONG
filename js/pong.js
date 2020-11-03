@@ -1,4 +1,4 @@
-alert("coucou")
+
 
 let largeur=$("balle").width();
 let gauche=parseInt($("balle").cssleft("left"));
