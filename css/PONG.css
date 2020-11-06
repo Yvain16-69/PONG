@@ -6,15 +6,19 @@ body {
 }
 #terrain{
      position: relative;
+     /** Rends la bordure visible et de couleur blanche. **/
      border: 1px solid white;
 
-     width:800px;
+    /** Dimension du terrain **/
+    width:800px;
      height:400px;
 
 }
 #balle{
      position: absolute;
+     /** Mets la balle au centre de l'écran en hauteur **/
      top:50%;
+     /** Mets la balle au centre de l'écran en hauteur **/
      left:50%;
      width: 20px;
      height: 20px;
