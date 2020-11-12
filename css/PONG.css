@@ -15,10 +15,9 @@ body{
 #terrain{
     position : relative;
     border: 1px solid #000;
-    /** Rendre le haut du terrian blanc **/
-    border-top-color: #fff;
-    /** Rendre le bas du terrain blanc **/
-    border-bottom-color: #fff;
+    border-top-color: #fff;/** Rendre le haut du terrian blanc **/
+    border-bottom-color: #fff;/** Rendre le bas du terrain blanc **/
+
     /** Dimensions du terrain **/
     width : 800px;
     height: 400px;
@@ -27,15 +26,13 @@ body{
 
 #balle{
     position : absolute;
-    /** Mets la balle au centre de l'écran en hauteur **/
-    top: 50%; 
-    /** Mets la balle au centre de l'écran en largeur **/
-    left:50%; 
+    top: 50%; /** Mets la balle au centre de l'écran en hauteur **/
+    left:50%; /** Mets la balle au centre de l'écran en largeur **/
+
     width: 20px;
     height:20px;
     background-color: white;
-    /** Fait en sorte que le carré devienne un cercle en arrondissant les bords **/
-    border-radius:100%; 
+    border-radius:100%; /** Fait en sorte que le carré devienne un cercle en arrondissant les bords **/
 }
 
 #raquette1{
