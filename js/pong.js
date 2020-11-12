@@ -1,24 +1,17 @@
 class Terrain{
-    //constructor permet d'attribuer des valeurs à ce qu'il y a dans les paranthèses
-    constructor($html){ 
-        //$ désigne un élément JQuerie 
-        this.$html=$html; 
+    constructor($html){ //constructor permet d'attribuer des valeurs à ce qu'il y a dans les paranthèses
+        this.$html=$html; //$ désigne un élément JQuerie 
         // $element 
-        // fait appel à l'élement css width de l'id terrain du css grâce au $
-        this.largeur=$("#terrain").width(); 
-        // on récupère/importe la valeur de la hauteur du terrain depuis le css
-        this.hauteur=$("#terrain").height(); 
+        this.largeur=$("#terrain").width(); // fait appel à l'élement css width de l'id terrain du css grâce au $
+        this.hauteur=$("#terrain").height(); // on récupère/importe la valeur de la hauteur du terrain depuis le css
     }
 }
 
 
-//déclare la variable terrain prenant la valeur de la class Terrain ci-dessus à laquelle on associe les valeurs de la l'id terrain de la fiche css
-let terrain=new Terrain($("#terrain")); 
-//affiche les valeurs de la variable terrain dans la console du navigateur web
-console.log(terrain); 
+let terrain=new Terrain($("#terrain")); //déclare la variable terrain prenant la valeur de la class Terrain ci-dessus à laquelle on associe les valeurs de la l'id terrain de la fiche css
+console.log(terrain); //affiche les valeurs de la variable terrain dans la console du navigateur web
 
-//Une classe sert seulement pour y répertorier des variables
-class Balle{ 
+class Balle{ //Une classe sert seulement pour y répertorier des variables
     constructor($html){
         this.$html=$html;
         this.haut=parseInt($("#balle").css("top"));
