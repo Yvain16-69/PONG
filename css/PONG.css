@@ -1,11 +1,10 @@
-body {
-
+body{
     background-color: #000;
     color: #fff;
     font-family: monospace;
-    
+
     /** Centre les éléments de la page **/
-    display: flex;
+    display: flex; 
     min-height: 100vh;
     flex-direction: column;
     justify-content: center;
@@ -14,23 +13,45 @@ body {
 }
 
 #terrain{
-     position: relative;
-     /** Rends la bordure visible et de couleur blanche. **/
-     border: 1px solid white;
-
-    /** Dimension du terrain **/
-    width:800px;
-     height:400px;
+    position : relative;
+    border: 1px solid #000;
+    /** Rendre le haut du terrian blanc **/
+    border-top-color: #fff;
+    /** Rendre le bas du terrain blanc **/
+    border-bottom-color: #fff;
+    /** Dimensions du terrain **/
+    width : 800px;
+    height: 400px;
 
 }
+
 #balle{
-     position: absolute;
-     /** Mets la balle au centre de l'écran en hauteur **/
-     top:50%;
-     /** Mets la balle au centre de l'écran en hauteur **/
-     left:50%;
-     width: 20px;
-     height: 20px;
-     background-color: white;
-     border-radius: 10px;
+    position : absolute;
+    /** Mets la balle au centre de l'écran en hauteur **/
+    top: 50%; 
+    /** Mets la balle au centre de l'écran en largeur **/
+    left:50%; 
+    width: 20px;
+    height:20px;
+    background-color: white;
+    /** Fait en sorte que le carré devienne un cercle en arrondissant les bords **/
+    border-radius:100%; 
+}
+
+#raquette1{
+    position : relative;
+    top:10%;
+    left : 10%;
+    width : 10px;
+    height : 100px;
+    background-color : white;
+}
+
+#raquette2{
+    position : relative;
+    top:80%;
+    left : 90%;
+    width : 10px;
+    height : 100px;
+    background-color : white;
 }
