@@ -4,7 +4,11 @@ body{
     font-family: monospace;
 
     /** Centre les éléments de la page **/
+<<<<<<< HEAD
     display: flex;
+=======
+    display: flex; 
+>>>>>>> fd7773428880053e20d9cf8050eae37938ddbbf6
     min-height: 100vh;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +19,11 @@ body{
 #terrain{
     position : relative;
     border: 1px solid #000;
+<<<<<<< HEAD
     border-top-color: #ffffff;/** Rendre le haut du terrian blanc **/
+=======
+    border-top-color: #fff;/** Rendre le haut du terrian blanc **/
+>>>>>>> fd7773428880053e20d9cf8050eae37938ddbbf6
     border-bottom-color: #fff;/** Rendre le bas du terrain blanc **/
 
     /** Dimensions du terrain **/
@@ -51,4 +59,8 @@ body{
     width : 10px;
     height : 100px;
     background-color : white;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fd7773428880053e20d9cf8050eae37938ddbbf6
