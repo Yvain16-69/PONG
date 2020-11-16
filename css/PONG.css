@@ -11,11 +11,11 @@ body{
 }
 
 #terrain{
-    position : relative;
-    border: 1px solid #000;
-    border-top-color: #ffffff;/** Rendre le haut du terrian blanc **/
-    border-top-color: #fff;/** Rendre le haut du terrian blanc **/
-    border-bottom-color: #fff;/** Rendre le bas du terrain blanc **/
+   position : relative;
+   border: 1px solid #000;
+   border-top-color: #ffffff;/** Rendre le haut du terrian blanc **/
+   border-top-color: #fff;/** Rendre le haut du terrian blanc **/
+   border-bottom-color: #fff;/** Rendre le bas du terrain blanc **/
 
     /** Dimensions du terrain **/
     width : 800px;
