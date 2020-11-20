@@ -1,10 +1,10 @@
 class Raquette{ //dans les classes, on ne fait que déclarer des variables, pour faire des actions, il faut utiliser une fonction
     constructor($html){
         this.$html=$html;
-        /*this.haut=parseInt($("#raquetteG").css("top"));
-        this.hauteur=parseInt($("#raquetteG").css("height"));
-        this.hauteur=parseInt($("#raquetteD").css("height"));
-        this.haut=parseInt($("#raquetteD").css("top"));*/
+        /*this.haut=parseInt($("#raquette1").css("top"));
+        this.hauteur=parseInt($("#raquette1").css("height"));
+        this.hauteur=parseInt($("#raquette2").css("height"));
+        this.haut=parseInt($("#raquette2").css("top"));*/
         this.haut = parseInt($html.css("top"));
         this.gauche = parseInt($html.css("left"));
         this.largeur = $html.width();
@@ -46,8 +46,8 @@ class Raquette{ //dans les classes, on ne fait que déclarer des variables, pour
     
 
     majHTML(){
-        /*this.$html.css("top",raquetteG.haut);
-        this.$html.css("top",raquetteD.haut);*/
+        /*this.$html.css("top",raquette1.haut);
+        this.$html.css("top",raquette2.haut);*/
         this.$html.css("top",this.haut);
     }  
 
@@ -67,5 +67,5 @@ class Raquette{ //dans les classes, on ne fait que déclarer des variables, pour
 
 }
 
-let raquetteG = new Raquette($("#raquetteG"));
-let raquetteD = new Raquette($("#raquetteD"));
+let raquette1 = new Raquette($("#raquette1"));
+let raquette2 = new Raquette($("#raquette2"));
