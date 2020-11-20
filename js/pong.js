@@ -11,8 +11,8 @@
 //cette fonction permet de déplacer la balle et les raquettes en récupérant les fonctions bouge dans les fichiers js correspondant
 setInterval(function(){  
   balle.bouge();
-  raquetteG.bouge();
-  raquetteD.bouge(); 
+  raquette1.bouge();
+  raquette2.bouge(); 
   
 }, 10);
 
@@ -20,16 +20,16 @@ setInterval(function(){
 window.addEventListener("keydown", function (event) {
     if (event.defaultPrevented) { return}
     if(event.key === "a"){
-      raquetteG.monte();
+      raquette1.monte();
     }
     if(event.key === "q"){
-      raquetteG.descend();
+      raquette1.descend();
     }
     if(event.key === "p"){
-      raquetteD.monte();
+      raquette2.monte();
     }
     if(event.key === "m"){
-      raquetteD.descend();
+      raquette2.descend();
     }
     event.preventDefault();
   }, true);
@@ -38,16 +38,16 @@ window.addEventListener("keydown", function (event) {
 window.addEventListener("keyup", function (event) {
   if (event.defaultPrevented) { return}
   if(event.key === "a"){
-    raquetteG.stop();
+    raquette1.stop();
   }
   if(event.key === "q"){
-    raquetteG.stop();
+    raquette1.stop();
   }
   if(event.key === "p"){
-    raquetteD.stop();
+    raquette2.stop();
   }
   if(event.key === "m"){
-    raquetteD.stop();
+    raquette2.stop();
   }
   event.preventDefault();
 }, true);
