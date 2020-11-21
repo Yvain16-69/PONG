@@ -89,5 +89,4 @@ class Balle{ //Une classe sert seulement pour y répertorier des variables
     }  
 }
 
-// déclaration de la variable js balle qui reprend les valeurs de la classe Balle qui reprend des valeurs css de l'id balle
-let balle = new Balle($("#balle"));
+

@@ -1,6 +1,12 @@
  //''let'' permet la déclaration des variables gauche et haut
+ // déclaration de la variable js balle qui reprend les valeurs de la classe Balle qui reprend des valeurs css de l'id balle
+ let balle = new Balle($("#balle"));
+ let raquetteG = new Raquette($("#raquetteG"));
+ let raquetteD = new Raquette($("#raquetteD"));
+ let terrain=new Terrain($("#terrain")); //déclare la variable terrain prenant la valeur de la class Terrain ci-dessus à laquelle on associe les valeurs de la l'id terrain de la fiche css
+ console.log(terrain); //affiche les valeurs de la variable terrain dans la console du navigateur web
 
-//parseInt convertit une chaine de caractère en un entier
+ //parseInt convertit une chaine de caractère en un entier
 
 
 
@@ -11,8 +17,8 @@
 //cette fonction permet de déplacer la balle et les raquettes en récupérant les fonctions bouge dans les fichiers js correspondant
 setInterval(function(){  
   balle.bouge();
-  raquette1.bouge();
-  raquette2.bouge(); 
+  raquetteG.bouge();
+  raquetteD.bouge(); 
   
 }, 10);
 
@@ -20,16 +26,17 @@ setInterval(function(){
 window.addEventListener("keydown", function (event) {
     if (event.defaultPrevented) { return}
     if(event.key === "a"){
-      raquette1.monte();
+        console.log("coucou")
+      raquetteG.monte();
     }
     if(event.key === "q"){
-      raquette1.descend();
+      raquetteG.descend();
     }
     if(event.key === "p"){
-      raquette2.monte();
+      raquetteD.monte();
     }
     if(event.key === "m"){
-      raquette2.descend();
+      raquetteD.descend();
     }
     event.preventDefault();
   }, true);
@@ -38,16 +45,16 @@ window.addEventListener("keydown", function (event) {
 window.addEventListener("keyup", function (event) {
   if (event.defaultPrevented) { return}
   if(event.key === "a"){
-    raquette1.stop();
+    raquetteG.stop();
   }
   if(event.key === "q"){
-    raquette1.stop();
+    raquetteG.stop();
   }
   if(event.key === "p"){
-    raquette2.stop();
+    raquetteD.stop();
   }
   if(event.key === "m"){
-    raquette2.stop();
+    raquetteD.stop();
   }
   event.preventDefault();
 }, true);

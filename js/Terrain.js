@@ -7,5 +7,3 @@ class Terrain{ //différent de la class css
     }
 }
 
-let terrain=new Terrain($("#terrain")); //déclare la variable terrain prenant la valeur de la class Terrain ci-dessus à laquelle on associe les valeurs de la l'id terrain de la fiche css
-console.log(terrain); //affiche les valeurs de la variable terrain dans la console du navigateur web

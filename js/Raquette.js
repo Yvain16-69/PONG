@@ -6,6 +6,9 @@ class Raquette{ //dans les classes, on ne fait que déclarer des variables, pour
         this.hauteur=parseInt($("#raquette2").css("height"));
         this.haut=parseInt($("#raquette2").css("top"));*/
         this.haut = parseInt($html.css("top"));
+        this.haut = 0;
+        console.log(this.haut)
+        console.log(this.$html)
         this.gauche = parseInt($html.css("left"));
         this.largeur = $html.width();
         this.hauteur = $html.height();
@@ -52,11 +55,13 @@ class Raquette{ //dans les classes, on ne fait que déclarer des variables, pour
     }  
 
     bouge(){
+        console.log("raquette",this.haut,this.vitesse,this.direction)
         this.haut=this.haut+this.vitesse*this.direction;
         this.majHTML(); //importer la valeur dans cette fonction 
         if (this.haut<0){
             this.haut=0;
             this.stop();
+
         }
         if (this.bas>terrain.hauteur){
             this.bas=terrain.hauteur;
@@ -67,5 +72,4 @@ class Raquette{ //dans les classes, on ne fait que déclarer des variables, pour
 
 }
 
-let raquette1 = new Raquette($("#raquette1"));
-let raquette2 = new Raquette($("#raquette2"));
+
