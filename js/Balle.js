@@ -122,5 +122,5 @@ class Balle{ //Une classe sert seulement pour y répertorier des variables
     }  
 }
 
-let balle = new Balle($("#balle"));
+
 
