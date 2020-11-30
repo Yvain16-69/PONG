@@ -51,12 +51,14 @@ body{
 
 #scoreG{
     position : absolute;
+    color: red;
     top: 50%;
     right:25%;
 }
 
 #scoreD{
     position : absolute;
+    color: blue;
     top:50%;
     left:25%;
 }
