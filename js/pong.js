@@ -1,4 +1,4 @@
- //''let'' permet la déclaration des variables gauche et haut
+ /*''let'' permet la déclaration des variables gauche et haut*/
  // déclaration de la variable js balle qui reprend les valeurs de la classe Balle qui reprend des valeurs css de l'id balle
  let balle = new Balle($("#balle"));
  let raquetteG = new Raquette($("#raquetteG"));
