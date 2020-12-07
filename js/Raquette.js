@@ -1,75 +1,137 @@
-class Raquette{ //dans les classes, on ne fait que déclarer des variables, pour faire des actions, il faut utiliser une fonction
-    constructor($html){
-        this.$html=$html;
-        /*this.haut=parseInt($("#raquette1").css("top"));
-        this.hauteur=parseInt($("#raquette1").css("height"));
-        this.hauteur=parseInt($("#raquette2").css("height"));
-        this.haut=parseInt($("#raquette2").css("top"));*/
-        this.haut = parseInt($html.css("top"));
-        this.haut = 0;
-        console.log(this.haut)
-        console.log(this.$html)
-        this.gauche = parseInt($html.css("left"));
-        this.largeur = $html.width();
+class Raquette {
+    constructor($html, $score) {
+
+        this.$element = $html;
+        /**
+         * @type {number}
+         */
+        this.score = 0;
+        this.$score = $score;
+        /**
+         *
+         * @type {number}
+         */
         this.hauteur = $html.height();
-        this.vitesse=1.5;
-        this.direction=0;
-        //this.bas=this.haut+this.hauteur; -> il faut le faire dans une fonction get car il s'agit d'un calcul
-    }
-    // on fait des classes et on déclare les variables dedans pour ensuite les utiliser dans les bouces if
-    
-    //le résultat d'un calcul; get = obtenir et set = définir
-    get bas(){ 
-        return this.haut+this.hauteur;
+        /**
+         *
+         * @type {number}
+         */
+        this.largeur = $html.width();
+        /**
+         *
+         * @type {number}
+         */
+        this.gauche = parseInt($html.css("left"));
+        /**
+         *
+         * @type {number}
+         */
+        this.haut = parseInt($html.css("top"));
+        /**
+         *
+         * @type {number}
+         */
+        this.direction = 0;
+        /**
+         *
+         * @type {number}
+         */
+        this.vitesse = 3;
     }
 
+
+    gagne() {
+        this.score = this.score + 1;
+        this.$score.text(this.score);
+    }
+
+    /**
+     *
+     * @returns {number}
+     */
+    get bas() {
+        return this.haut + this.hauteur;
+    }
+
+    /**
+     *
+     * @param value
+     */
     set bas(value) {
         this.haut = value - this.hauteur;
     }
 
+    /**
+     *
+     * @returns {number}
+     */
     get droite() {
-        return this.gauche+this.largeur;
+        return this.gauche + this.largeur;
     }
 
+    /**
+     * @param value
+     */
     set droite(value) {
-        this.largeur = value - this.largeur;
-    }
-    
-    monte(){
-        this.direction=-1;
+        this.gauche = value - this.largeur;
     }
 
-    descend(){
-        this.direction=1;
+    tiltRDroite() {
+        //ajouter une classe
+        this.$element.addClass("tiltRDroite");
+        let buffer = this;
+
+        setTimeout(
+            function () {
+                //retirer une classe
+                buffer.$element.removeClass("tiltRDroite");
+            }, 200
+        );
     }
 
-    stop(){
-        this.direction=0;
+    tiltRGauche() {
+        //ajouter une classe
+        this.$element.addClass("tiltRGauche");
+        let buffer = this;
+
+        setTimeout(
+            function () {
+                //retirer une classe
+                buffer.$element.removeClass("tiltRGauche");
+            }, 200
+        );
     }
-    
 
-    majHTML(){
-        /*this.$html.css("top",raquette1.haut);
-        this.$html.css("top",raquette2.haut);*/
-        this.$html.css("top",this.haut);
-    }  
+    bouger() {
+        this.haut += this.vitesse * this.direction;
+        this.limite();
+        this.majHTML();
+    }
 
-    bouge(){
-        console.log("raquette",this.haut,this.vitesse,this.direction)
-        this.haut=this.haut+this.vitesse*this.direction;
-        this.majHTML(); //importer la valeur dans cette fonction 
-        if (this.haut<0){
-            this.haut=0;
-            this.stop();
+    monter() {
+        this.direction = -1;
+    }
 
+    descendre() {
+        this.direction = 1;
+    }
+
+    arret() {
+        this.direction = 0;
+    }
+
+    majHTML() {
+        this.$element.css("top", this.haut);
+    }
+
+    limite() {
+        if (this.bas > terrain.hauteur) {
+            this.bas = terrain.hauteur;
+            this.arret();
         }
-        if (this.bas>terrain.hauteur){
-            this.bas=terrain.hauteur;
-            this.stop();
+        if (this.haut < 0) {
+            this.haut = 0;
+            this.arret();
         }
     }
-
-
 }
-
-
