@@ -23,11 +23,11 @@ body{
 }
 
 .tiltHaut {
-    border-top-color: rgb(0, 250, 0) !important;
+    border-top-color: rgb(187, 250, 56) !important;
 }
 
 .tiltBas {
-    border-bottom-color: rgb(0, 250, 0) !important;
+    border-bottom-color: rgb(69, 69, 250) !important;
 }
 
 .tiltGauche {
@@ -103,8 +103,8 @@ body{
     padding: 10px;
     font-family: arial;
     font-size: 1em;
-    color: #5f497a;
-    background-color: #fac08f;
+    color: #5f469a;
+    background-color: #fac42f;
     border-radius: 24px;
     display:inline-block;
     cursor:pointer;
@@ -120,8 +120,8 @@ body{
 .btn:hover {
     padding: 10px;
     font-size: 1em;
-    color: #5f497a;
-    background-color: #fac08f;
+    color: #5f469a;
+    background-color: #fac42f;
     border-radius: 24px;
     display:inline-block;
     cursor:pointer;
@@ -149,4 +149,3 @@ body{
     top:50%;
     left:25%;
 }
-
