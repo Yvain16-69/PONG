@@ -1,89 +1,60 @@
-//Création de plusieurs objets
-/**
- * @type {Terrain}
- */
-let terrain = new Terrain($("#terrain"));
-/**
- * @type {Balle}
- */
-let balle = new Balle($("#balle"));
-/**
- * @type {Raquette}
- */
-let raquetteGauche = new Raquette($("#gauche"),$("#Sgauche"));
-/**
- * @type {Raquette}
- */
-let raquetteDroite = new Raquette($("#droite"),$("#Sdroite"));
-/**
- * @type {HTMLElement}
- */
-let boutonDepart = document.getElementById("btnDepart");
-/**
- * @type {HTMLElement}
- */
-let removeEcran = document.getElementById("ecran-debut");
+ /*''let'' permet la déclaration des variables gauche et haut*/
+ // déclaration de la variable js balle qui reprend les valeurs de la classe Balle qui reprend des valeurs css de l'id balle
+ let balle = new Balle($("#balle"));
+ let raquetteG = new Raquette($("#raquetteG"));
+ let raquetteD = new Raquette($("#raquetteD"));
+ let terrain=new Terrain($("#terrain")); //déclare la variable terrain prenant la valeur de la class Terrain ci-dessus à laquelle on associe les valeurs de la l'id terrain de la fiche css
+ console.log(terrain); //affiche les valeurs de la variable terrain dans la console du navigateur web
 
-/**
- * Boucle de jeu, permet d'actualiser le déplacement des raquettes et de la balle
- */
+ //parseInt convertit une chaine de caractère en un entier
 
-let demarrer = false;
 
-setInterval(function () {
-    if (demarrer){
-        //Utilisation des fonctions présentes dans leurs classes respectives
-        balle.bouger();
-        raquetteGauche.bouger();
-        raquetteDroite.bouger();
-    }
+
+
+// Jquerry perme de faire le lien entre html/css et le fichier js 
+
+
+//cette fonction permet de déplacer la balle et les raquettes en récupérant les fonctions bouge dans les fichiers js correspondant
+setInterval(function(){  
+  balle.bouge();
+  raquetteG.bouge();
+  raquetteD.bouge(); 
+  
 }, 10);
 
-
-boutonDepart.addEventListener("click", () => {
-    if(getComputedStyle(removeEcran).display != "none"){
-        removeEcran.style.display = "none";
-    } else {
-        removeEcran.style.display = "block";
-    }
-    demarrer = true;
-})
-
-
-
-//Permet d'identifier sur quelle touche du clavier se passe l'appuie
+//fonction permettant "d'écouter" les touches "a, q, p et m" du clavier lorsqu'elles sont pressées
 window.addEventListener("keydown", function (event) {
-    if (event.defaultPrevented) {
-        return
+    if (event.defaultPrevented) { return}
+    if(event.key === "a"){
+        console.log("coucou")
+      raquetteG.monte();
     }
-
-    //Les touches bougent avec les appuies sur les touches respectives
-    if (event.key === "a") {
-        raquetteGauche.monter();
+    if(event.key === "q"){
+      raquetteG.descend();
     }
-    if (event.key === "q") {
-        raquetteGauche.descendre();
+    if(event.key === "p"){
+      raquetteD.monte();
     }
-    if (event.key === "p") {
-        raquetteDroite.monter();
-    }
-    if (event.key === "m") {
-        raquetteDroite.descendre();
+    if(event.key === "m"){
+      raquetteD.descend();
     }
     event.preventDefault();
-}, true);
+  }, true);
 
-
+//fonction permettant "d'écouter" les touches "a, q, p et m" du clavier lorsqu'elles sont relachées
 window.addEventListener("keyup", function (event) {
-    if (event.defaultPrevented) {
-        return
-    }
-    //Quand on relache les touches, les raquettes ne bougent plus
-    if (event.key === "a" || event.key === "q") {
-        raquetteGauche.arret();
-    }
-    if (event.key === "p" || event.key === "m") {
-        raquetteDroite.arret();
-    }
-    event.preventDefault();
+  if (event.defaultPrevented) { return}
+  if(event.key === "a"){
+    raquetteG.stop();
+  }
+  if(event.key === "q"){
+    raquetteG.stop();
+  }
+  if(event.key === "p"){
+    raquetteD.stop();
+  }
+  if(event.key === "m"){
+    raquetteD.stop();
+  }
+  event.preventDefault();
 }, true);
