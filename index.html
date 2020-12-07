@@ -1,41 +1,23 @@
-<html>
+<html lang="fr">
 <head>
-    <link rel="icon" href="https://www.francoischarron.com/datascontent/pong-atari-table-cafe-jeu-video.JPG">
-    <link rel="stylesheet" href="CSS/pong.css"/>
+    <link rel="stylesheet" href="css/PONG.css"/>
+    <title>PONG!!</title> <!-- Titre de page -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Wooow un Pong excellent !!!</title>
+    <!--importe la bibliothèque jQueries-->
 </head>
 <body>
-<div class="ecranDebut" id="ecran-debut">
-    <div>
-        Joueur 1 <br><br>
-        utilisez les touches <br><br>
-        <span class="touche">A</span>
-        et
-        <span class="touche">Q</span>
-    </div>
-    <div>
-        Joueur 2 <br><br>
-        utilisez les touches <br><br>
-        <span class="touche">P</span>
-        et
-        <span class="touche">M</span>
-    </div>
-    <a class="btn" id="btnDepart">Lancer une partie</a>
-</div>
+
 <div id="terrain">
     <div id="balle"></div>
-    <div id="gauche" class="raquette"></div>
-    <div id="droite" class="raquette"></div>
-    <div id="Sgauche" class="score">0</div>
-    <div id="Sdroite" class="score">0</div>
+    <div id="raquetteG" class="raquette"></div>
+    <div id="raquetteD" class="raquette"></div>
+    <div id="scoreG">0</div>
+    <div id="scoreD">0</div>
 </div>
-</body>
-<!-- chargement des classes -->
-<script src="JavaScript/Balle.js"></script>
-<script src="JavaScript/Terrain.js"></script>
-<script src="JavaScript/Raquette.js"></script>
-<script src="JavaScript/pong.js"></script>
-<script src="JavaScript/Parties.js"></script>
 
+<script src="js/Balle.js"></script>
+<script src="js/Raquette.js"></script>
+<script src="js/Terrain.js"></script>
+<script src="js/pong.js"></script>
+</body>
 </html>
