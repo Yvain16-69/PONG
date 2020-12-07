@@ -1,232 +1,123 @@
   
-//Classe de création d'un objet balle
-class Balle {
-    /**
-     *
-     * @param $html
-     */
-    constructor($html) {
-        this.$element = $html;
-
-        /**
-         *
-         * @type {number}
-         */
-        this.hauteur = $html.height();
-
-        /**
-         *
-         * @type {number}
-         */
-        this.largeur = $html.width();
-
-        /**
-         *
-         * @type {number}
-         */
-        this.gauche = parseInt($html.css("left"));
-
-        /**
-         *
-         * @type {number}
-         */
-        this.haut = parseInt($html.css("top"));
-
-        /**
-         *
-         * @type {number}
-         */
-        this.vitesseBase = terrain.largeur / 500;
-
-        /**
-         *
-         * @type {number}
-         */
-        this.vitesse = this.vitesseBase;
-
-        /**
-         *
-         * @type {number}
-         */
-        this.vitesseMax = terrain.largeur / 100;
-
-        /**
-         *
-         * @type {number}
-         */
-        this.acceleration = 1.2;
-
-        /**
-         *
-         * @type {number}
-         */
-        this.buf = Math.random();
-
-        /**
-         *
-         * @type {number}
-         */
-        this.angle = this.defAngle();
+class Balle{ //Une classe sert seulement pour y répertorier des variables
+    constructor($html){
+        this.$html=$html;
+        this.haut=parseInt($html.css("top")); //déclaration de variables uniquement pour cette classe
+        this.gauche=parseInt($html.css("left")); // this permet de déclarer une variable dans une classe et let permet de déclarer des variables en dehors des classes
+        this.vitesseX=Math.random()*2-1;//la balle peut aller dans toutes les directions de façon aléatoire
+        this.vitesseY=Math.random()*2-1;// multiplier par 2 puis soustraire 1 permet d'avoir un intervalle Math.random() compris entre -1 et 1 pour pouvoir aller soit à droite, soit à gauche. Il en va de même pour le haut et le bas
+        this.largeur=$html.width(); //on fait appel à la valeur width de l'id balle du css pour l'intégrer dans le fichier js
+        this.hauteur=$html.height();
+        this.acceleration=0.5;
+        this.vitesseMaxG=3;
+        this.vitesseMaxD=-3;
     }
 
-    /**
-     *
-     * @returns {number}
-     */
+    //le résultat d'un calcul; get = obtenir et set = définir
     get bas() {
-        return this.haut + this.hauteur;
+        return this.haut+this.hauteur;
     }
 
-    /**
-     *
-     * @param value
-     */
     set bas(value) {
         this.haut = value - this.hauteur;
     }
-
-    /**
-     *
-     * @returns {number}
-     */
+    
     get droite() {
-        return this.gauche + this.largeur;
+        return this.gauche+this.largeur;
     }
 
-    /**
-     *
-     * @param value
-     */
     set droite(value) {
-        this.gauche = value - this.largeur;
+        this.largeur = value - this.largeur;
+    }
+  
+    get vitprogD(){
+        return this.vitesseX+this.acceleration;
     }
 
-    /**
-     *
-     * @returns {number}
-     */
-    defAngle() {
-        return this.buf < 0.5 ? (5 * Math.PI / 4) - Math.random() * (2 * Math.PI / 4) : (Math.PI / 4) - Math.random() * (2 * Math.PI / 4);
+    set vitprogD(value){
+        this.acceleration = value - this.acceleration;
+    }
+    // Cf schéma de mon carnet de notes pour explication du - acceleration au lieu du + acceleration pour la raquette gauche
+    get vitprogG(){
+        return this.vitesseX-this.acceleration;
     }
 
-    /**
-     *Augmente la vitesse de la balle jusqu'au maximum
-     */
-    accelerer() {
-        if (Math.abs(this.vitesse) < this.vitesseMax) {
-            this.vitesse *= this.acceleration;
-            console.log(Math.abs(this.vitesse));
-        }
-        else {
-            this.vitesse = this.vitesseMax;
-        }
+    set vitprogG(value){ 
+        this.acceleration = value - this.acceleration;
     }
 
-    /**
-     *Recentre la balle dans le terrain
-     */
-    recentrer() {
-        this.gauche = terrain.largeur / 2 - this.largeur / 2;
-        this.haut = terrain.hauteur / 2 - this.hauteur / 2;
-
-        this.angle = this.defAngle();
-        this.vitesseDeBase();
+    // la fonction "mise à jour html"
+    majHTML(){ 
+    this.$html.css("left",balle.gauche);
+    this.$html.css("top",balle.haut);
     }
 
-    /**
-     *Remet la vitesse de la balle à celle de base
-     */
-    vitesseDeBase() {
-        this.vitesse = this.vitesseBase;
-    }
-
-    /**
-     *Donne un mouvement à la balle
-     */
-    bouger() {
-        this.gauche += Math.cos(this.angle) * this.vitesse;
-        this.haut += Math.sin(this.angle) * this.vitesse;
-        console.log(this.vitesse);
-
-        this.limite();
+    // permet de définir les collisions de la balle avec le terrain et les raquettes 
+    limitmouv(){
+        
         this.majHTML();
-    }
 
-    /**
-     *Permet de faire rebondire la balle
-     */
-    limite() {
-        //droite
-        if ((this.droite) > terrain.largeur) {
-            terrain.tiltDroite();
-
-            this.buf = 0.75;
-
-            this.droite = terrain.largeur;
-            this.angle = Math.PI - this.angle;
-            this.recentrer();
-            raquetteGauche.gagne();
+        // la balle rebondit lorsqu'elle touche le bas du terrain
+        if(this.bas>terrain.hauteur){
+            this.bas=terrain.hauteur;
+            this.vitesseY=this.vitesseY*-1;
         }
-        //gauche
-        if (this.gauche < 0) {
-            terrain.tiltGauche();
-
-            this.buf = 0.25;
-
-            this.gauche = 0;
-            this.angle = Math.PI - this.angle;
-            this.recentrer();
-            raquetteDroite.gagne();
-
+        // la balle rebondit lorsqu'elle touche le haut du terrain
+        if(this.haut<0){
+            this.haut=0;
+            this.vitesseY=this.vitesseY*-1;
         }
-        //bas
-        if (this.bas > terrain.hauteur) {
-            terrain.tiltBas();
-
-            this.bas = terrain.hauteur;
-            this.angle = -(this.angle);
+        // la balle revient au centre lorsqu'elle touche la droite du terrain
+        if (this.droite>terrain.largeur){
+            this.gauche=terrain.largeur/2;
+            this.haut=terrain.hauteur/2;
         }
-        //haut
-        if (this.haut < 0) {
-            terrain.tiltHaut();
-
-            this.haut = 0;
-            this.angle = -(this.angle);
+        // la balle revient au centre lorsqu'elle touche la gauche du terrain
+        if(this.gauche<0){
+            this.gauche=terrain.largeur/2;
+            this.haut=terrain.hauteur/2;
         }
-        //Rebonds sur les raquettes
-        //Gauche
-        if (this.gauche < raquetteGauche.droite) { //si la balle dépasse à gauche de la raquette gauche
-            if (this.bas > raquetteGauche.haut) { //et si la balle est plus basse que le haut de la raquette
-                if (this.haut < raquetteGauche.bas) { // et si la balle est plus haute que le bas de la raquette
 
-                    this.accelerer();
-                    this.angle = Math.PI - this.angle;
-                    raquetteGauche.tiltRGauche();
-                }
+       //rebonds sur les raquettes
+        if(this.gauche < raquetteG.droite){
+            if(this.bas > raquetteG.haut){
+              if(this.haut < raquetteG.bas){
+                  if(this.vitesseX<0){
+                    this.vitesseX = this.vitprogG*-1;
+                    console.log(this.vitesseX);
+                    if(this.vitesseX>2){
+                        this.vitesseX=this.vitesseMaxG;
+                    }
+                  }
+              }
             }
         }
-        //Droite
-        if (this.droite > raquetteDroite.gauche) { //si la balle dépasse à droite la raquette droite
-            if (this.bas > raquetteDroite.haut) { //et si la balle est plus basse que le haut de la raquette
-                if (this.haut < raquetteDroite.bas) { // et si la balle est plus haute que le bas de la raquette
-
-                    this.accelerer();
-                    this.angle = Math.PI - this.angle;
-
-                    raquetteDroite.tiltRDroite();
+        if(this.droite > raquetteD.gauche){
+            if(this.bas > raquetteD.haut){
+              if(this.haut < raquetteD.bas){
+                if(this.vitesseX>0){
+                    this.vitesseX = this.vitprogD*-1;
+                    console.log(this.vitesseX);
+                    if(this.vitesseX<-2){
+                        this.vitesseX=this.vitesseMaxD;
+                    }
                 }
+              }
             }
         }
+    
+   
+      
     }
+      
+     bouge(){
+        //la balle bouge
+        this.gauche=this.gauche+this.vitesseX;
+        this.haut=this.haut+this.vitesseY;
 
-    /**
-     *
-     */
-    majHTML() {
-        this.$element.css("left", balle.gauche);
-        this.$element.css("top", balle.haut);
-    }
+        //les limites de mouvements faisant rebondir la balle
+        this.limitmouv();
+        
+        this.majHTML();
+    }  
 }
-
-
-
